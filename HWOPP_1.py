@@ -144,18 +144,26 @@ class Track:
  def show(self):
   return f'Название песни {self.name}, длительность  - {self.duration} минуты'
 
-list_song = [
+list_song_1 = [
 Track('Whatever it Takes ', 3),
 Track('Believer', 3),
 Track('Thunder', 3)
 ]
+
+list_song_2 = [
+Track('Radioactive ', 4),
+Track('Demons', 4),
+Track('Warriors', 4)
+]
+
 class Album:
- name = 'Evolve'
- Group = 'Imagine Dragons'
- tracklist = list_song
+ def __init__(self,name_a,group,tracklist):
+  self.name_a = name_a
+  self.group= group
+  self.tracklist= tracklist
  def get_track(self):
   track_list=''
-  for track in list_song:
+  for track in self.tracklist:
     track_list += track.show() + '\n'
   return (track_list)
  def add_tracks(self,song):
@@ -165,13 +173,19 @@ class Album:
   return  self.tracklist
  def get_duration(self):
   sum_time = 0
-  for track in list_song:
+  for track in self.tracklist:
    sum_time += track.duration
   return f'Длительность всего альбома составляет {sum_time} минут'
 
-first_album = Album()
+first_album = Album('Evolve','Imagine Dragons',list_song_1)
+second_album = Album('Night Visions', 'Imagine Dragons', list_song_2)
+
 
 
 print(first_album.add_tracks(('Natural',3)))
 print (first_album.get_track())
 print (first_album.get_duration())
+
+print(second_album.add_tracks(('Sucker for Pain',4)))
+print (second_album.get_track())
+print (second_album.get_duration())
